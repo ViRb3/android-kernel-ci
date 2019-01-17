@@ -1,0 +1,22 @@
+image: ubuntu:latest
+
+# $TAG - git tag to use to create stable build
+
+stages:
+  - build
+
+build:
+  stage: build
+  when: manual
+  allow_failure: false
+  cache:
+    paths:
+      - ccache/
+  before_script:
+    - . ./prepare.sh
+  script:
+    - ./build.sh $TAG || exit "$?"
+  artifacts:
+    paths:
+      - $CI_PROJECT_DIR/*.zip
+      - $CI_PROJECT_DIR/*.txt
