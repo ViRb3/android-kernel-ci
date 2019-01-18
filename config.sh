@@ -26,3 +26,7 @@ export COMPILER_NAME="CLANG-8.0.6"
 # Kernel config
 export DEFCONFIG="redflare_defconfig"
 export KERNEL_NAME="RedFlare-Kernel"
+
+export KBUILD_BUILD_USER="elf"
+export KBUILD_BUILD_HOST="buildstation"
+export KBUILD_BUILD_VERSION=1
