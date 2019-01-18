@@ -11,7 +11,7 @@ export REPO_ROOT=`pwd`
 mkdir "ccache"
 export CCACHE_BASEDIR="${REPO_ROOT}"
 export CCACHE_DIR="${REPO_ROOT}/ccache"
-export CCACHE_COMPILERCHECK=content
+export CCACHE_COMPILERCHECK="content"
 
 # Paths
 export CLANG="ccache ${REPO_ROOT}/data/clang/clang-r346389b/bin/clang"
