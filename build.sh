@@ -16,16 +16,15 @@ process_build () {
     BUILD_SUCCESS=$?
     
     if [ ${BUILD_SUCCESS} -eq 0 ]; then
-        mkdir -p "${ANYKERNELBASE_DIR}/kernels/custom"
-        mkdir -p "${ANYKERNELBASE_DIR}/kernels/oos"
-        cp -f "${KERNEL_DIR}/out/arch/arm64/boot/Image.gz-dtb" "${ANYKERNELBASE_DIR}/kernels/custom/Image.gz-dtb"
-        cd "${ANYKERNELBASE_DIR}"
+        mkdir -p "${ANYKERNEL_IMAGE_DIR}"
+        cp -f "${KERNEL_DIR}/out/arch/arm64/boot/Image.gz-dtb" "${ANYKERNEL_IMAGE_DIR}/Image.gz-dtb"
+        cd "${ANYKERNEL_DIR}"
         zip -r9 "${REPO_ROOT}/${LOCAL_VERSION}.zip" * -x README
         cd -
     fi
     
     rm -rf "${KERNEL_DIR}/out"
-    rm -rf "${ANYKERNELBASE_DIR}/kernels"
+    rm -rf "${ANYKERNEL_IMAGE_DIR}"
     return ${BUILD_SUCCESS}
 }
 

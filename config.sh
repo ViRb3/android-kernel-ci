@@ -16,7 +16,8 @@ export CCACHE_COMPILERCHECK=content
 # Paths
 export CLANG="ccache ${REPO_ROOT}/data/clang/clang-r346389b/bin/clang"
 export CROSS_COMPILE="${REPO_ROOT}/data/gcc/bin/aarch64-linux-android-"
-export ANYKERNELBASE_DIR="${REPO_ROOT}/data/anykernel2base"
+export ANYKERNEL_DIR="${REPO_ROOT}/data/anykernel2base"
+export ANYKERNEL_IMAGE_DIR="${ANYKERNEL_DIR}/kernels/custom"
 export KERNEL_DIR="${REPO_ROOT}/data/kernel"
 
 # If not defined gives long compiler name
