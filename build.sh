@@ -3,8 +3,6 @@
 . ./config.sh "$1"
 
 process_build () {
-    sed -i -r "s/(CONFIG_LOCALVERSION=).*/\1\"-${LOCAL_VERSION}\"/" "${KERNEL_DIR}/arch/arm64/configs/${DEFCONFIG}"
-    
     make O=out ARCH=arm64 ${DEFCONFIG}
     make -j$(nproc --all) O=out \
     ARCH=arm64 \
@@ -19,7 +17,7 @@ process_build () {
         mkdir -p "${ANYKERNEL_IMAGE_DIR}"
         cp -f "${KERNEL_DIR}/out/arch/arm64/boot/Image.gz-dtb" "${ANYKERNEL_IMAGE_DIR}/Image.gz-dtb"
         cd "${ANYKERNEL_DIR}"
-        zip -r9 "${REPO_ROOT}/${LOCAL_VERSION}.zip" * -x README
+        zip -r9 "${REPO_ROOT}/${LOCALVERSION}.zip" * -x README
         cd -
     fi
     
@@ -38,9 +36,10 @@ then
 else
     VERSION="RELEASE-${TAG}"
 fi
-LOCAL_VERSION="${KERNEL_NAME}-${VERSION}"
+# Used by compiler
+export LOCALVERSION="${KERNEL_NAME}-${VERSION}"
 
-echo "Building ${LOCAL_VERSION} ..."
+echo "Building ${LOCALVERSION} ..."
 process_build
 BUILD_SUCCESS=$?
 
