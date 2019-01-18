@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-mkdir "data"
+mkdir -p "data"
 ./clone.sh https://github.com/mTresk/android_kernel_oneplus_msm8998.git "data/kernel" "$1" || exit "$?"
 ./clone.sh https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 "data/gcc" || exit "$?"
 ./clone.sh https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 "data/clang" || exit "$?"
@@ -8,7 +8,7 @@ mkdir "data"
 
 export REPO_ROOT=`pwd`
 
-mkdir "ccache"
+mkdir -p "ccache"
 export CCACHE_BASEDIR="${REPO_ROOT}"
 export CCACHE_DIR="${REPO_ROOT}/ccache"
 export CCACHE_COMPILERCHECK="content"
