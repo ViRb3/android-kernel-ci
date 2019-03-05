@@ -5,12 +5,12 @@ GIT="git -C ${DIR}"
 echo "Obtaining '${URL}' in '${DIR}' ..."
 
 is_head () {
-    $GIT ls-remote --heads | grep -E "refs/heads/${TAG}$" >/dev/null
+    $GIT ls-remote -q --heads --exit-code "origin" "${TAG}"
     return $?
 }
 
 is_tag () {
-    $GIT ls-remote --tags | grep -E "refs/tags/${TAG}$" >/dev/null
+    $GIT ls-remote -q --tags --exit-code "origin" "${TAG}"
     return $?
 }
 
@@ -25,14 +25,14 @@ update () {
         $GIT fetch origin tag "${TAG}" --depth=1 || exit "$?"
         SRC="${TAG}"
     elif [ -z "${TAG}" ]; then
-        echo "No tag provided, using origin/HEAD commit"
+        echo "No tag provided, using origin HEAD commit"
+        $GIT fetch origin "HEAD" --depth=1 || exit "$?"
         SRC="origin/HEAD"
     else
         echo "No such tag or branch, aborting!"
         exit 1
     fi
-    $GIT checkout "${SRC}" || exit "$?"
-    $GIT reset --hard "${SRC}" || exit "$?"
+    $GIT checkout -f --detach "${SRC}" || exit "$?"
 }
 
 if [ ! -d "${DIR}" ]; then
