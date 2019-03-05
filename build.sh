@@ -23,7 +23,7 @@ process_build () {
     fi
     
     rm -rf "${KERNEL_DIR}/out"
-    rm -rf "${ANYKERNEL_IMAGE_DIR}"
+    rm "${ANYKERNEL_IMAGE_DIR}/Image.gz-dtb"
     return ${BUILD_SUCCESS}
 }
 
