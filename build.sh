@@ -4,6 +4,9 @@ LABEL="$1"; REF="$2"
 . ./config.sh
 
 process_build () {
+    # Remove defconfig localversion to prevent duplication
+    sed -i -r "s/(CONFIG_LOCALVERSION=).*/\1/" "${KERNEL_DIR}/arch/arm64/configs/${DEFCONFIG}"
+
     make O=out ARCH=arm64 ${DEFCONFIG}
     make -j$(nproc --all) O=out \
     ARCH=arm64 \
@@ -29,14 +32,12 @@ process_build () {
 
 cd "${KERNEL_DIR}"
 
-# Do we have a label?
+# Ensure the kernel has a label
 if [ -z "${LABEL}" ]; then
-    VERSION="SNAPSHOT-$(git rev-parse --short HEAD)"
-else
-    VERSION="${LABEL}"
+    LABEL="SNAPSHOT-$(git rev-parse --short HEAD)"
 fi
 # Used by compiler
-export LOCALVERSION="${KERNEL_NAME}-${VERSION}"
+export LOCALVERSION="${KERNEL_NAME}-${LABEL}"
 
 echo "Building ${LOCALVERSION} ..."
 process_build
