@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 mkdir -p "data"
-./clone.sh https://github.com/mTresk/android_kernel_oneplus_msm8998.git "data/kernel" "$1" || exit "$?"
+./clone.sh https://github.com/mTresk/android_kernel_oneplus_msm8998.git "data/kernel" "${TAG}" || exit "$?"
 ./clone.sh https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 "data/gcc" || exit "$?"
 ./clone.sh https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 "data/clang" || exit "$?"
 ./clone.sh https://github.com/mTresk/AnyKernel2.git "data/anykernel2base" "redflare-op5" || exit "$?"
@@ -17,7 +17,7 @@ export KERNEL_DIR="${REPO_ROOT}/data/kernel"
 
 # Set CI_CCACHE=0 to disable ccache
 if [ -z ${CI_CCACHE} ] || [ ${CI_CCACHE} = 1 ]; then
-    CLANG="ccache ${CLANG}"
+    export CLANG="ccache ${CLANG}"
     mkdir -p "ccache"
     export CCACHE_BASEDIR="${REPO_ROOT}"
     export CCACHE_DIR="${REPO_ROOT}/ccache"

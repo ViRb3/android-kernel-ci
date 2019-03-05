@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-. ./config.sh "$1"
+TAG="$1"
+. ./config.sh
 
 process_build () {
     make O=out ARCH=arm64 ${DEFCONFIG}
@@ -29,7 +30,6 @@ process_build () {
 cd "${KERNEL_DIR}"
 
 # Is this test release?
-TAG="$(git describe --tags)"
 if [ -z "${TAG}" ]
 then
     VERSION="TEST-$(git rev-parse --short HEAD)"

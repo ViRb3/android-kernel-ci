@@ -1,18 +1,42 @@
 #!/usr/bin/env bash
 
-echo "Cloning to $2 ..."
+URL="$1"; DIR="$2"; TAG="$3"
+GIT="git -C ${DIR}"
+echo "Obtaining '${URL}' in '${DIR}' ..."
 
-if [ -d "$2" ]
-then
-    echo "Already cloned, updating ..."
-    git -C "$2" fetch --depth=1 || exit "$?"
-    git -C "$2" reset --hard origin || exit "$?"
-elif [ ! -z "$3" ]
-then
-    echo "Using tag $3"
-    git clone -q --branch "$3" --depth=1 "$1" "$2" || exit "$?"
-else
-    git clone -q --depth=1 "$1" "$2" || exit "$?"
+is_head () {
+    $GIT ls-remote --heads | grep -E "refs/heads/${TAG}$" >/dev/null
+    return $?
+}
+
+is_tag () {
+    $GIT ls-remote --tags | grep -E "refs/tags/${TAG}$" >/dev/null
+    return $?
+}
+
+update () {
+    if is_head; then
+        echo "Found branch, using its commit"
+        $GIT remote set-branches --add origin "${TAG}" || exit "$?"
+        $GIT fetch origin "${TAG}" --depth=1 || exit "$?"
+        SRC="origin/${TAG}"
+    elif is_tag; then
+        echo "Found tag, using its commit"
+        $GIT fetch origin tag "${TAG}" --depth=1 || exit "$?"
+        SRC="${TAG}"
+    else
+        echo "Tag or branch doesn't exist, using origin/HEAD commit"
+        SRC="origin/HEAD"
+    fi
+    $GIT checkout "${SRC}" || exit "$?"
+    $GIT reset --hard "${SRC}" || exit "$?"
+}
+
+if [ ! -d "${DIR}" ]; then
+    mkdir "${DIR}"
+    $GIT clone "${URL}" . -n --depth=1 || exit "$?"
 fi
+
+update
 
 echo "Done!"
