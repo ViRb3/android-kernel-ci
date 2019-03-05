@@ -21,16 +21,16 @@ Run a new pipeline, optionally defining variables
 ### Examples
 * *no variables* 
     * builds from latest `HEAD` commit `320408e0`
-    * produces `Redflare-Kernel-TEST-320408e0.zip`
+    * produces `Redflare-Kernel-SNAPSHOT-320408e0.zip`
 * REF="alpha"
     * builds from latest tag or branch `alpha` commit `73a05b11`
-    * produces `Redflare-Kernel-TEST-73a05b11.zip`
+    * produces `Redflare-Kernel-SNAPSHOT-73a05b11.zip`
 * LABEL="1.0"
     * builds from latest `HEAD` commit `320408e0`
     * produces `Redflare-Kernel-1.0.zip`
 * REF="alpha" LABEL="1.0"
     * builds from latest tag or branch `alpha` commit `73a05b11`
     * produces `Redflare-Kernel-1.0.zip`
-    
+
 ## Configuring
 Check `config.sh` and `prepare.sh`

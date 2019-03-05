@@ -29,10 +29,9 @@ process_build () {
 
 cd "${KERNEL_DIR}"
 
-# Is this test release?
-if [ -z "${LABEL}" ]
-then
-    VERSION="TEST-$(git rev-parse --short HEAD)"
+# Do we have a label?
+if [ -z "${LABEL}" ]; then
+    VERSION="SNAPSHOT-$(git rev-parse --short HEAD)"
 else
     VERSION="${LABEL}"
 fi
