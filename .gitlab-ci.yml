@@ -14,7 +14,7 @@ build:
     - . ./print-vars.sh
     - . ./prepare.sh
   script:
-    - ./build.sh "${AKCI_REF}" "${AKCI_LABEL}" || exit "$?"
+    - ./build.sh "${AKCI_LABEL}" "${AKCI_REF}" || exit "$?"
   artifacts:
     paths:
       - $CI_PROJECT_DIR/*.zip
