@@ -15,8 +15,8 @@ export ANYKERNEL_DIR="${REPO_ROOT}/data/anykernel2base"
 export ANYKERNEL_IMAGE_DIR="${ANYKERNEL_DIR}/kernels/custom"
 export KERNEL_DIR="${REPO_ROOT}/data/kernel"
 
-# Set CI_CCACHE=0 to disable ccache
-if [ -z ${CI_CCACHE} ] || [ ${CI_CCACHE} = 1 ]; then
+# Set to 0 to disable ccache
+if [ -z ${AKCI_CCACHE} ] || [ ${AKCI_CCACHE} = 1 ]; then
     export CLANG="ccache ${CLANG}"
     mkdir -p "ccache"
     export CCACHE_BASEDIR="${REPO_ROOT}"
