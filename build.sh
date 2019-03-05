@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-TAG="$1"
+TAG="$1"; LABEL="$2"
 . ./config.sh
 
 process_build () {
@@ -30,11 +30,11 @@ process_build () {
 cd "${KERNEL_DIR}"
 
 # Is this test release?
-if [ -z "${TAG}" ]
+if [ -z "${LABEL}" ]
 then
     VERSION="TEST-$(git rev-parse --short HEAD)"
 else
-    VERSION="RELEASE-${TAG}"
+    VERSION="RELEASE-${LABEL}"
 fi
 # Used by compiler
 export LOCALVERSION="${KERNEL_NAME}-${VERSION}"

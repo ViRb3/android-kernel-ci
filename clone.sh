@@ -24,9 +24,12 @@ update () {
         echo "Found tag, using its commit"
         $GIT fetch origin tag "${TAG}" --depth=1 || exit "$?"
         SRC="${TAG}"
-    else
-        echo "Tag or branch doesn't exist, using origin/HEAD commit"
+    elif [ -z "${TAG}" ]
+        echo "No tag provided, using origin/HEAD commit"
         SRC="origin/HEAD"
+    else
+        echo "No such tag or branch, aborting!"
+        exit 1
     fi
     $GIT checkout "${SRC}" || exit "$?"
     $GIT reset --hard "${SRC}" || exit "$?"
