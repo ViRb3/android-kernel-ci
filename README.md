@@ -31,5 +31,6 @@ Run a new pipeline, optionally defining variables
 * REF="alpha" LABEL="1.0"
     * builds from latest tag or branch `alpha` commit `73a05b11`
     * produces `Redflare-Kernel-1.0.zip`
+    
 ## Configuring
 Check `config.sh` and `prepare.sh`
