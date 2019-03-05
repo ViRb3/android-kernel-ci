@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 mkdir -p "data"
-./clone.sh https://github.com/mTresk/android_kernel_oneplus_msm8998.git "data/kernel" "${REF}" || exit "$?"
-./clone.sh https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 "data/gcc" || exit "$?"
-./clone.sh https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 "data/clang" || exit "$?"
-./clone.sh https://github.com/mTresk/AnyKernel2.git "data/anykernel2base" "redflare-op5" || exit "$?"
+./sync.sh https://github.com/mTresk/android_kernel_oneplus_msm8998.git "data/kernel" "${REF}" || exit "$?"
+./sync.sh https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 "data/gcc" || exit "$?"
+./sync.sh https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 "data/clang" || exit "$?"
+./sync.sh https://github.com/mTresk/AnyKernel2.git "data/anykernel2base" "redflare-op5" || exit "$?"
 
 export REPO_ROOT=`pwd`
 
