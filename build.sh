@@ -34,7 +34,7 @@ if [ -z "${LABEL}" ]
 then
     VERSION="TEST-$(git rev-parse --short HEAD)"
 else
-    VERSION="RELEASE-${LABEL}"
+    VERSION="${LABEL}"
 fi
 # Used by compiler
 export LOCALVERSION="${KERNEL_NAME}-${VERSION}"
