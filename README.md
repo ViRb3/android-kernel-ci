@@ -12,13 +12,24 @@ A generic auto-build repo for Android kernels using GitLab's CI
 
 Do not flash the artifacts, extract them and flash the zip inside!
 
-## Building
-### Test (snapshot) build
-* Run a new pipeline without any variables
-* Will be tagged with short git commit hash
-### Stable (versioned) build
-* Run a new pipeline with a variable `TAG` set to the git tag to build from, e.g. `v3.0`. Tag must exist in the kernel repo!
-* Will be tagged with the supplied version
-
+## Usage
+Run a new pipeline, optionally defining variables
+### Variables
+* `AKCI_TAG` - git tag or branch to build from
+* `AKCI_LABEL` - label to use for kernel. If not defined, kernel will be labeled with short git commit hash
+* `AKCI_CCACHE` - whether to use ccache. Either `1` or `0`, default: `1`
+### Examples
+* *no variables* 
+    * builds from latest `HEAD` commit `320408e0`
+    * produces `Redflare-Kernel-TEST-320408e0.zip`
+* TAG="alpha"
+    * builds from latest tag or branch `alpha` commit `73a05b11`
+    * produces `Redflare-Kernel-TEST-73a05b11.zip`
+* LABEL="1.0"
+    * builds from latest `HEAD` commit `320408e0`
+    * produces `Redflare-Kernel-RELEASE-1.0.zip`
+* TAG="alpha" LABEL="1.0"
+    * builds from latest tag or branch `alpha` commit `73a05b11`
+    * produces `Redflare-Kernel-RELEASE-1.0.zip`
 ## Configuring
 Check `config.sh` and `prepare.sh`
