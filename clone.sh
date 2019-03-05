@@ -16,16 +16,16 @@ is_tag () {
 
 update () {
     if is_head; then
-        echo "Found branch, using its commit"
+        echo "Found branch, using its head"
         $GIT remote set-branches --add origin "${REF}" || exit "$?"
         $GIT fetch origin "${REF}" --depth=1 || exit "$?"
         SRC="origin/${REF}"
     elif is_tag; then
-        echo "Found tag, using its commit"
+        echo "Found tag, using its head"
         $GIT fetch origin tag "${REF}" --depth=1 || exit "$?"
         SRC="${REF}"
     elif [ -z "${REF}" ]; then
-        echo "No tag provided, using origin HEAD commit"
+        echo "No ref provided, using origin head"
         $GIT fetch origin "HEAD" --depth=1 || exit "$?"
         SRC="origin/HEAD"
     else
