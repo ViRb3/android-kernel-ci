@@ -11,6 +11,7 @@ build:
     paths:
       - ccache/
   before_script:
+    - . ./print-vars.sh
     - . ./prepare.sh
   script:
     - ./build.sh "${AKCI_REF}" "${AKCI_LABEL}" || exit "$?"
