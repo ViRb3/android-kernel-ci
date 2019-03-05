@@ -1,7 +1,5 @@
 image: ubuntu:latest
 
-# $TAG - git tag to use to create stable build
-
 stages:
   - build
 
@@ -15,7 +13,7 @@ build:
   before_script:
     - . ./prepare.sh
   script:
-    - ./build.sh $TAG || exit "$?"
+    - ./build.sh "${AKCI_TAG}" "${AKCI_LABEL}" || exit "$?"
   artifacts:
     paths:
       - $CI_PROJECT_DIR/*.zip
