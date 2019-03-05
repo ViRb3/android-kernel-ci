@@ -36,7 +36,7 @@ update () {
 }
 
 if [ ! -d "${DIR}" ]; then
-    mkdir "${DIR}"
+    mkdir -p "${DIR}"
     $GIT clone "${URL}" . -n --depth=1 || exit "$?"
 fi
 
