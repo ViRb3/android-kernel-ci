@@ -24,7 +24,7 @@ update () {
         echo "Found tag, using its commit"
         $GIT fetch origin tag "${TAG}" --depth=1 || exit "$?"
         SRC="${TAG}"
-    elif [ -z "${TAG}" ]
+    elif [ -z "${TAG}" ]; then
         echo "No tag provided, using origin/HEAD commit"
         SRC="origin/HEAD"
     else
