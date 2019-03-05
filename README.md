@@ -15,20 +15,20 @@ Do not flash the artifacts, extract them and flash the zip inside!
 ## Usage
 Run a new pipeline, optionally defining variables
 ### Variables
-* `AKCI_TAG` - git tag or branch to build from
+* `AKCI_REF` - git tag or branch to build from
 * `AKCI_LABEL` - label to use for kernel. If not defined, kernel will be labeled with short git commit hash
 * `AKCI_CCACHE` - whether to use ccache. Either `1` or `0`, default: `1`
 ### Examples
 * *no variables* 
     * builds from latest `HEAD` commit `320408e0`
     * produces `Redflare-Kernel-TEST-320408e0.zip`
-* TAG="alpha"
+* REF="alpha"
     * builds from latest tag or branch `alpha` commit `73a05b11`
     * produces `Redflare-Kernel-TEST-73a05b11.zip`
 * LABEL="1.0"
     * builds from latest `HEAD` commit `320408e0`
     * produces `Redflare-Kernel-1.0.zip`
-* TAG="alpha" LABEL="1.0"
+* REF="alpha" LABEL="1.0"
     * builds from latest tag or branch `alpha` commit `73a05b11`
     * produces `Redflare-Kernel-1.0.zip`
 ## Configuring

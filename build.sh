@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-TAG="$1"; LABEL="$2"
+REF="$1"; LABEL="$2"
 . ./config.sh
 
 process_build () {
