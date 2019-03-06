@@ -21,7 +21,7 @@ process_build () {
         mkdir -p "${ANYKERNEL_IMAGE_DIR}"
         cp -f "${KERNEL_DIR}/out/arch/arm64/boot/Image.gz-dtb" "${ANYKERNEL_IMAGE_DIR}/Image.gz-dtb"
         cd "${ANYKERNEL_DIR}"
-        zip -r9 "${REPO_ROOT}/${LOCALVERSION}.zip" * -x README
+        zip -r9 "${REPO_ROOT}/${FULLNAME}.zip" * -x README
         cd -
     fi
     
@@ -36,10 +36,11 @@ cd "${KERNEL_DIR}"
 if [ -z "${LABEL}" ]; then
     LABEL="SNAPSHOT-$(git rev-parse --short HEAD)"
 fi
+FULLNAME="${KERNEL_NAME}-${LABEL}"
 # Used by compiler
-export LOCALVERSION="${KERNEL_NAME}-${LABEL}"
+export LOCALVERSION="-${FULLNAME}"
 
-echo "Building ${LOCALVERSION} ..."
+echo "Building ${FULLNAME} ..."
 process_build
 BUILD_SUCCESS=$?
 
