@@ -4,6 +4,8 @@ LABEL="$1"; REF="$2"
 . ./config.sh
 
 process_build () {
+    # Used by compiler
+    export LOCALVERSION="-${FULLNAME}"
     # Remove defconfig localversion to prevent duplication
     sed -i -r "s/(CONFIG_LOCALVERSION=).*/\1/" "${KERNEL_DIR}/arch/arm64/configs/${DEFCONFIG}"
 
@@ -37,8 +39,6 @@ if [ -z "${LABEL}" ]; then
     LABEL="SNAPSHOT-$(git rev-parse --short HEAD)"
 fi
 FULLNAME="${KERNEL_NAME}-${LABEL}"
-# Used by compiler
-export LOCALVERSION="-${FULLNAME}"
 
 echo "Building ${FULLNAME} ..."
 process_build
