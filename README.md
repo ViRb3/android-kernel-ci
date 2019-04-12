@@ -6,10 +6,7 @@ A generic auto-build repo for Android kernels using GitLab's CI
 * RedFlare kernel by Tresk
 * Automatic versioning
 
-## Downloads
-* Latest build: `/-/jobs/artifacts/master/download?job=build`
-* Browse all builds: `/pipelines`
-
+## [Releases](https://gitlab.com/ViRb3/android-kernel-ci/pipelines) @ GitLab Pipelines
 Do not flash the artifacts, extract them and flash the zip inside!
 
 ## Usage
