@@ -12,7 +12,7 @@ export REPO_ROOT=`pwd`
 export CLANG="${REPO_ROOT}/data/clang/clang-r353983d/bin/clang"
 export CROSS_COMPILE="${REPO_ROOT}/data/gcc/bin/aarch64-linux-android-"
 export ANYKERNEL_DIR="${REPO_ROOT}/data/anykernel2base"
-export ANYKERNEL_IMAGE_DIR="${ANYKERNEL_DIR}/kernels/custom"
+export ANYKERNEL_IMAGE_DIR="${ANYKERNEL_DIR}"
 export KERNEL_DIR="${REPO_ROOT}/data/kernel"
 
 # Set to 0 to disable ccache
