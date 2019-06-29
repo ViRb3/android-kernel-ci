@@ -1,0 +1,22 @@
+kind: pipeline
+name: android-kernel-ci
+
+platform:
+  os: linux
+  arch: amd64
+
+clone:
+  depth: 1
+
+steps:
+  - name: build
+    image: ubuntu:latest
+    environment:
+      AKCI_CCACHE: 0
+    commands:
+      - . ./print-vars.sh || exit "$?"
+      - . ./prepare.sh || exit "$?"
+      - ./build.sh "${AKCI_LABEL}" "${AKCI_REF}" || exit "$?"
+      - ./upload.sh || exit "$?"
+      # sometimes log gets cut off too early
+      - sleep 1
