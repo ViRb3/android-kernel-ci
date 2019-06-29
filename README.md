@@ -32,3 +32,5 @@ Check `config.sh` and `prepare.sh`
 ## Notes
 ### GitLab
 Do not flash the artifacts, extract them and flash the zip inside!
+### DroneCI
+As of writing there is no releasea mechanism, so ZIPs are uploaded to [transfer.sh](https://transfer.sh) and stored for 14 days
