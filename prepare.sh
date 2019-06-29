@@ -15,13 +15,13 @@ mkdir -p "data"
 
 PIDS=""
 ./sync.sh https://github.com/mTresk/android_kernel_oneplus_msm8998.git "data/kernel" "${REF}" &
-PIDS+=" $!"
+PIDS="${PIDS} $!"
 ./sync.sh https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 "data/gcc" &
-PIDS+=" $!"
+PIDS="${PIDS} $!"
 ./sync.sh https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 "data/clang" &
-PIDS+=" $!"
+PIDS="${PIDS} $!"
 ./sync.sh https://github.com/mTresk/AnyKernel2.git "data/anykernel2base" "redflare-op5" &
-PIDS+=" $!"
+PIDS="${PIDS} $!"
 
 for p in $PIDS; do
     wait $p || exit "$?"
