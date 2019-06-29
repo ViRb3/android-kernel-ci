@@ -1,13 +1,10 @@
 # Android Kernel CI Releases
-A generic auto-build repo for Android kernels using GitLab's CI
+A generic auto-build repo for Android kernels using various Continuous Integration services
 
 ## Features
 * OnePlus 5T ARM64 preset
 * RedFlare kernel by Tresk
 * Automatic versioning
-
-## [Releases](https://gitlab.com/ViRb3/android-kernel-ci/pipelines) @ GitLab Pipelines
-Do not flash the artifacts, extract them and flash the zip inside!
 
 ## Usage
 Run a new pipeline, optionally defining variables
@@ -31,3 +28,7 @@ Run a new pipeline, optionally defining variables
 
 ## Configuring
 Check `config.sh` and `prepare.sh`
+
+## Notes
+### GitLab
+Do not flash the artifacts, extract them and flash the zip inside!
