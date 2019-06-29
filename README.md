@@ -14,7 +14,7 @@ Run a new pipeline, optionally defining variables
 ### Variables
 * `AKCI_REF` - git tag or branch to build from
 * `AKCI_LABEL` - label to use for kernel. If not defined, kernel will be labeled with short git commit hash
-* `AKCI_CCACHE` - whether to use ccache. Either `1` or `0`, default: `1`
+* `AKCI_CCACHE` - whether to use ccache. Define to enable, default: `undefined`
 ### Examples
 * *no variables* 
     * builds from latest `HEAD` commit `320408e0`

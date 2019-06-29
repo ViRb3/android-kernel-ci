@@ -11,8 +11,8 @@ clone:
 steps:
   - name: build
     image: ubuntu:latest
-    environment:
-      AKCI_CCACHE: 0
+    # environment:
+    #   AKCI_CCACHE: 1
     commands:
       - . ./print-vars.sh || exit "$?"
       - . ./prepare.sh || exit "$?"
