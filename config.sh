@@ -1,21 +1,5 @@
 #!/usr/bin/env bash
 
-mkdir -p "data"
-
-PIDS=""
-./sync.sh https://github.com/mTresk/android_kernel_oneplus_msm8998.git "data/kernel" "${REF}" &
-PIDS+=" $!"
-./sync.sh https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 "data/gcc" &
-PIDS+=" $!"
-./sync.sh https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 "data/clang" &
-PIDS+=" $!"
-./sync.sh https://github.com/mTresk/AnyKernel2.git "data/anykernel2base" "redflare-op5" &
-PIDS+=" $!"
-
-for p in $PIDS; do
-    wait $p || exit "$?"
-done
-
 export REPO_ROOT=`pwd`
 
 # Paths
