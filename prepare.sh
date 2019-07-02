@@ -20,7 +20,7 @@ PIDS="${PIDS} $!"
 PIDS="${PIDS} $!"
 ./sync.sh https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 "data/clang" &
 PIDS="${PIDS} $!"
-./sync.sh https://github.com/mTresk/AnyKernel2.git "data/anykernel2base" "redflare-op5" &
+./sync.sh https://github.com/mTresk/AnyKernel2.git "data/anykernel" "redflare-op5" &
 PIDS="${PIDS} $!"
 
 for p in $PIDS; do
