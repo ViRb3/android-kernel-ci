@@ -19,7 +19,7 @@ if [ ! -z ${AKCI_CCACHE} ]; then
 fi
 
 # If not defined gives long compiler name
-export COMPILER_NAME="CLANG-8.0.4"
+export COMPILER_NAME="CLANG-9.0.4"
 
 # Kernel config
 export DEFCONFIG="redflare_defconfig"
