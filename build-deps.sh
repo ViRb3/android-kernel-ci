@@ -1,13 +1,6 @@
 #!/bin/bash
 
-echo "Installing required packages ..."
-
-# required
-apk add --no-cache bash git build-base perl ccache curl zip || exit "$?"
-# per kernel
-apk add --no-cache libressl-dev bc python || exit "$?"
-
-echo "Syncing required repositories ..."
+echo "Syncing dependencies ..."
 
 mkdir "data"
 

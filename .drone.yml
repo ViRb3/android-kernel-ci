@@ -6,14 +6,23 @@ platform:
   arch: amd64
 
 steps:
+  - name: build-deps
+    image: alpine:3.10
+    commands:
+      - apk add bash git
+      - ./build-deps.sh
+
   - name: build
     image: alpine:3.10
     # environment:
     #   AKCI_CCACHE: 1
     commands:
-      - . ./print-vars.sh
-      - . ./prepare.sh
+      # required
+      - apk add bash git build-base perl ccache curl zip
+      # per kernel
+      - apk add libressl-dev bc python
       - ./build.sh "${AKCI_LABEL}" "${AKCI_REF}"
+
   - name: publish
     image: plugins/github-release
     when:
