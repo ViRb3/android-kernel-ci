@@ -13,14 +13,15 @@ steps:
       - ./build-deps.sh
 
   - name: build
-    image: alpine:3.10
+    image: ubuntu:18.04
     # environment:
     #   AKCI_CCACHE: 1
     commands:
+      - apt update > /dev/null
       # required
-      - apk add bash git build-base perl ccache curl zip
+      - apt install -y git build-essential ccache curl zip > /dev/null
       # per kernel
-      - apk add libressl-dev bc python
+      - apt install -y libssl-dev bc python > /dev/null
       - ./print-vars.sh
       - ./build.sh "${AKCI_LABEL}" "${AKCI_REF}"
 
