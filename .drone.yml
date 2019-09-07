@@ -14,6 +14,12 @@ steps:
       - . ./print-vars.sh || exit "$?"
       - . ./prepare.sh || exit "$?"
       - ./build.sh "${AKCI_LABEL}" "${AKCI_REF}" || exit "$?"
-      - ./upload.sh || exit "$?"
-      # sometimes log gets cut off too early
-      - sleep 1
+  - name: publish
+    image: plugins/github-release
+    when:
+      event:
+        - tag
+    settings:
+      api_key:
+        from_secret: github_token
+      files: "*.zip"
