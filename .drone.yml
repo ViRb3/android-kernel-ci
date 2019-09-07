@@ -7,7 +7,7 @@ platform:
 
 steps:
   - name: build
-    image: ubuntu:latest
+    image: alpine:3.10
     # environment:
     #   AKCI_CCACHE: 1
     commands:

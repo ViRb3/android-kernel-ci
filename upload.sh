@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 for file in *.zip; do
     echo "Uploading ${file} ..."

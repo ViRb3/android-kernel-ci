@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 LABEL="$1"; REF="$2"
 . ./config.sh
