@@ -9,7 +9,7 @@ apk add --no-cache libressl-dev bc python || exit "$?"
 
 echo "Syncing required repositories ..."
 
-mkdir -p "data"
+mkdir "data"
 
 PIDS=""
 ./sync.sh https://github.com/mTresk/android_kernel_oneplus_msm8998.git "data/kernel" "${REF}" &
