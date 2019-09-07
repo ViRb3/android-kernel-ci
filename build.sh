@@ -6,7 +6,7 @@ LABEL="$1"; REF="$2"
 process_build () {
     # Used by compiler
     export LOCALVERSION="-${FULLNAME}"
-    # Remove defconfig localversion to prevent duplication
+    # Remove defconfig localversion to prevent overriding
     sed -i -r "s/(CONFIG_LOCALVERSION=).*/\1/" "${KERNEL_DIR}/arch/arm64/configs/${DEFCONFIG}"
 
     make O=out ARCH=arm64 ${DEFCONFIG}
