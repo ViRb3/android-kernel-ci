@@ -21,6 +21,7 @@ steps:
       - apk add bash git build-base perl ccache curl zip
       # per kernel
       - apk add libressl-dev bc python
+      - ./print-vars.sh
       - ./build.sh "${AKCI_LABEL}" "${AKCI_REF}"
 
   - name: publish
