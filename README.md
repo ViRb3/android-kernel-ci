@@ -27,7 +27,7 @@ Run a new pipeline, optionally defining variables
     * produces `Redflare-Kernel-1.0.zip`
 
 ## Configuring
-Check `config.sh` and `prepare.sh`
+Check `config.sh` and `build-deps.sh`
 
 ## Notes
 ### GitLab
