@@ -11,9 +11,9 @@ steps:
     # environment:
     #   AKCI_CCACHE: 1
     commands:
-      - . ./print-vars.sh || exit "$?"
-      - . ./prepare.sh || exit "$?"
-      - ./build.sh "${AKCI_LABEL}" "${AKCI_REF}" || exit "$?"
+      - . ./print-vars.sh
+      - . ./prepare.sh
+      - ./build.sh "${AKCI_LABEL}" "${AKCI_REF}"
   - name: publish
     image: plugins/github-release
     when:
